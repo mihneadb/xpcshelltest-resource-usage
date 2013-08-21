@@ -5,7 +5,7 @@ var chartHeight = $(window).height() - 60 - 60
 
 d3.json("resources.json", function(data) {
     data = data.filter(function(elem) {
-        return elem.ext_memory_info !== null;
+        return elem.duration !== null && elem.duration !== undefined;
     });
 
     tip = d3.tip().html(function(d) {
@@ -22,8 +22,8 @@ d3.json("resources.json", function(data) {
     });
 
     var computeHeight = d3.scale.linear()
-    .domain([0, d3.max(data, getDuration)])
-    .range([0, chartHeight]);
+    .domain([1, d3.max(data, getDuration)])
+    .range([1, chartHeight]);
 
     chart.attr("width", data.length * 5)
         .attr("height", chartHeight);
