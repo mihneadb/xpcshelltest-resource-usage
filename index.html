@@ -30,6 +30,22 @@
     <div class="row">
         <div class="small-12 columns">
             <div class="row">
+                <div class="small-6 columns">
+                    <select id="key">
+                        <option value="duration" selected>Duration</option>
+                        <option value="cpu_time">CPU Time</option>
+                        <option value="memory">Memory</option>
+                        <option value="io">IO</option>
+                    </select>
+                </div>
+                <div class="small-4 columns">
+                    <label>Sort<input type="checkbox" id="sort"></label>
+                </div>
+                <div class="small-2 columns">
+                    <a href="#" class="button" id="plot-btn">Plot</a>
+                </div>
+            </div>
+            <div class="row">
                 <div class="" id="chart-div">
                     <svg id="chart"></svg>
                 </div>
