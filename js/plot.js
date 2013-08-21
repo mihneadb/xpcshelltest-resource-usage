@@ -97,3 +97,10 @@ window.onresize = replot;
 $('#file').on('change', handleFile);
 $('#key').on('change', replot);
 $('#sort').on('change', replot);
+
+
+// plot a default graph
+d3.json("resources.json", function(d) {
+    data = d;
+    plotGraph(data);
+});
