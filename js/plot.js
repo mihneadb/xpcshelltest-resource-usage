@@ -1,6 +1,8 @@
 var BAR_WIDTH = 10;
 var MIN_HEIGHT = 5;
 
+var plotted = false;
+
 var getters = {
     'duration': function(d) {
         return d.duration;
@@ -69,6 +71,13 @@ function plotGraph() {
             })
             .on('mouseout', tip.hide);
     });
+    plotted = true;
 }
+
+window.onresize = function() {
+    if (plotted) {
+        plotGraph();
+    }
+};
 
 $('#plot-btn').on('click', plotGraph);
