@@ -1,6 +1,8 @@
 var chart = d3.select("#chart");
-var chartWidth = $("#chart-div").width()
-var chartHeight = $(window).height() - 60 - 60
+var chartWidth = $("#chart-div").width();
+var chartHeight = $(window).height() - 60 - 60;
+
+var BAR_WIDTH = 10;
 
 
 d3.json("resources.json", function(data) {
@@ -25,16 +27,21 @@ d3.json("resources.json", function(data) {
     .domain([1, d3.max(data, getDuration)])
     .range([1, chartHeight]);
 
-    chart.attr("width", data.length * 5)
+    chart.attr("width", data.length * BAR_WIDTH)
         .attr("height", chartHeight);
     chart.selectAll("rect")
         .data(data)
         .enter().append("rect")
-        .attr("x", function(d, i) { return i * 5; })
+        .attr("x", function(d, i) { return i * BAR_WIDTH; })
         .attr("y", function(d, i) { return chartHeight - computeHeight(getDuration(d)); })
         .attr("height", function(d, i) { return computeHeight(getDuration(d)); })
-        .attr("width", 5)
-        .on('mouseover', tip.show)
+        .attr("width", BAR_WIDTH)
+        .on('mouseover', function(d) {
+            tip.show(d);
+            // center it horizontally
+            var tipWidth = $('.d3-tip').width();
+            $('.d3-tip').css('left', $(window).width() / 2 - tipWidth / 2 + 'px');
+        })
         .on('mouseout', tip.hide);
 });
 

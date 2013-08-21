@@ -3,6 +3,10 @@
    stroke: white;
 }
 
+#chart rect:hover {
+   fill: blue;
+}
+
 #chart-div {
    overflow: auto;
 }
@@ -17,7 +21,6 @@
   color: #fff;
 
   position: fixed;
-  top: 60px;
-  left: 10%;
+  top: 200px;
 }
 
