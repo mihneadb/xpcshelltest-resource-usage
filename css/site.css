@@ -9,10 +9,15 @@
 
 #chart-div {
    overflow: auto;
+   padding: 5px;
+}
+
+#controls {
+  text-align: center;
 }
 
 .content {
-   margin-top: 60px;
+   padding-top: 20px;
 }
 
 .d3-tip {
