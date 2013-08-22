@@ -67,6 +67,7 @@ function plotGraph(data) {
         .attr("width", BAR_WIDTH)
         .on('mouseover', function(d) {
             tip.show(d);
+            $('.d3-tip').css('top', $("#chart").position().top + 'px');
             // center it horizontally
             var tipWidth = $('.d3-tip').width();
             $('.d3-tip').css('left', $(window).width() / 2 - tipWidth / 2 + 'px');
