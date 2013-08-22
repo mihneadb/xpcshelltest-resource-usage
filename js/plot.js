@@ -21,7 +21,6 @@ var getters = {
 
 function plotGraph(data) {
     var f = $("#file");
-    console.log(f);
     // remove old chart and make new one
     $("#chart").remove();
     $("#chart-div").append('<svg id="chart"></svg>');
