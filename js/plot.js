@@ -26,7 +26,7 @@ function plotGraph(data) {
     $("#chart-div").append('<svg id="chart"></svg>');
     var chart = d3.select("#chart");
     var chartWidth = $("#chart-div").width();
-    var chartHeight = $(window).height() - $("#chart").position().top - 20;
+    var chartHeight = $(window).height() - $("#chart").position().top - 30;
 
     var key = $("#key")[0].value;
     var sort = $("#sort")[0].checked;
@@ -53,7 +53,7 @@ function plotGraph(data) {
     }
 
     var computeHeight = d3.scale.linear()
-    .domain([MIN_HEIGHT, d3.max(data, getterFunc)])
+    .domain([0, d3.max(data, getterFunc)])
     .range([MIN_HEIGHT, chartHeight]);
 
     chart.attr("width", data.length * BAR_WIDTH)
