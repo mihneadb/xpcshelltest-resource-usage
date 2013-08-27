@@ -9,13 +9,13 @@ var getters = {
         return d.duration;
     },
     'cpu_time': function(d) {
-        return d.cpu_times.system + d.cpu_times.user;
+        return d.CPU.stime + d.CPU.utime;
     },
     'memory': function(d) {
-        return d.ext_memory_info.rss;
+        return d.MEM.VmRSS;
     },
     'io': function(d) {
-        return d.io_counters.read_count;
+        return d.IO.rchar + d.IO.wchar;
     }
 };
 
