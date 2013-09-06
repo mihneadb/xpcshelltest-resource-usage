@@ -23,6 +23,7 @@ function plotGraph(data) {
     var f = $("#file");
     // remove old chart and make new one
     $("#chart").remove();
+    $(".d3-tip").remove();
     $("#chart-div").append('<svg id="chart"></svg>');
     var chart = d3.select("#chart");
     var chartWidth = $("#chart-div").width();
