@@ -24,19 +24,26 @@ function plotGraph(data) {
     // remove old chart and make new one
     $("#chart").remove();
     $(".d3-tip").remove();
-    $("#chart-div").append('<svg id="chart"></svg>');
-    var chart = d3.select("#chart");
-    var chartWidth = $("#chart-div").width();
-    var chartHeight = $(window).height() - $("#chart").position().top - 50;
+    $("#na").remove();
 
     var key = $("#key")[0].value;
     var sort = $("#sort")[0].checked;
     var getterFunc = getters[key];
 
-    // plot it
     data = data.filter(function(elem) {
         return getterFunc(elem) !== null && getterFunc(elem) !== undefined;
     });
+
+    if (data.length == 0) {
+        $("#chart-div").append("<h1 id='na' class='text-center'>N/A</h1>");
+        plotted = true;
+        return;
+    }
+
+    $("#chart-div").append('<svg id="chart"></svg>');
+    var chart = d3.select("#chart");
+    var chartWidth = $("#chart-div").width();
+    var chartHeight = $(window).height() - $("#chart").position().top - 50;
 
     tip = d3.tip().html(function(d) {
         return "<div class='d3-tip'>" +
