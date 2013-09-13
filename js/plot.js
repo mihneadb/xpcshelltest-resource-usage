@@ -84,13 +84,24 @@ function plotGraph(data) {
     plotted = true;
 }
 
+function makeDataArray(data) {
+    var arr = new Array();
+
+    var keys = Object.keys(data);
+    for (var i = 0; i < keys.length; i++) {
+        data[keys[i]].test_file = keys[i];
+        arr.push(data[keys[i]]);
+    }
+    return arr;
+}
+
 function handleFile(ev) {
     var files = ev.target.files;
     var file = files[0];
     var reader = new FileReader();
     reader.onloadend = function() {
-        data = JSON.parse(reader.result);
-        plotGraph(data);
+        resource_usage = JSON.parse(reader.result);
+        plotGraph(makeDataArray(resource_usage.data));
     };
     reader.readAsText(file);
 }
@@ -108,7 +119,7 @@ $('#sort').on('change', replot);
 
 
 // plot a default graph
-d3.json("resources.json", function(d) {
-    data = d;
+d3.json("resources.json", function(resource_usage) {
+    data = makeDataArray(resource_usage.data);
     plotGraph(data);
 });
